@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aakrititiwari.onlineshopping.HomeController"
+            fitToWidth="true" prefHeight="600" fx:id="scrollPane">
+    <VBox spacing="10">
+        <HBox spacing="20" style="-fx-padding: 5px;">
+            <Button text="All Orders" onAction="#goToOrders" style="-fx-padding: 5px"/>
+            <Button text="All Products" onAction="#goToProducts" style="-fx-padding: 5px"/>
+        </HBox>
+        <VBox spacing="10">
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Products" style="-fx-padding: 10px; -fx-font-size: 16px;"/>
+            </VBox>
+            <TableView fx:id="productTable" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="productIdColumn" text="ID">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="id"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="productNameColumn" text="Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="productPriceColumn" text="Price">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="price"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="productDescriptionColumn" text="Description">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="description"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <Button text="Add to Cart" onAction="#handleAddToCart"/>
+        </VBox>
+        <VBox spacing="10" alignment="CENTER">
+            <Label text="Cart" style="-fx-padding: 10px; -fx-font-size: 16px;"/>
+        </VBox>
+        <TableView fx:id="cartTable" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="cartProductIdColumn" text="Product ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="productId"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="cartProductNameColumn" text="Product Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="productName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="cartProductPriceColumn" text="Price">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="productPrice"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="cartProductQuantityColumn" text="Quantity">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="productQuantity"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="cartTotalPriceColumn" text="Total Price">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalPrice"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <Label fx:id="grandTotalLabel" text="Grand Total: Rs. 0.00"
+               style="-fx-font-size: 14px; -fx-padding: 10px;"/>
+
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Remove" onAction="#removeFromCart"/>
+            <Button text="Order" onAction="#handleProceedToCheckout"/>
+        </HBox>
+        <StackPane fx:id="stackPane">
+            <VBox fx:id="checkoutFormVBox" spacing="10" visible="false"
+                  style="-fx-padding: 10px;-fx-border-color: black; -fx-border-width: 1; -fx-background-color: #f0f0f0;">
+                <Label text="Order Form" style="-fx-font-size: 16px; -fx-padding: 10px;"/>
+                <Label text="Your Name:"/>
+                <TextField fx:id="nameField"/>
+                <Label text="Your Address:"/>
+                <TextField fx:id="addressField"/>
+                <Label text="Your Contact Number:"/>
+                <TextField fx:id="contactNumberField"/>
+                <Button text="Place Order" onAction="#handleSubmitOrder"/>
+            </VBox>
+        </StackPane>
+    </VBox>
+</ScrollPane>

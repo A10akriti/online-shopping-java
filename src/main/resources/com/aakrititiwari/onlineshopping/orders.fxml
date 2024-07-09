@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.aakrititiwari.onlineshopping.OrderController">
+    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 5px;">
+        <Button text="Go to Products" onAction="#goToProducts" style="-fx-padding: 5px"/>
+        <Button text="Go to Home" onAction="#goToHome" style="-fx-padding: 5px"/>
+    </HBox>
+    <GridPane style="-fx-padding: 8px">
+        <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0" hgap="10" vgap="10" prefWidth="600">
+            <TableView fx:id="orderTableView" prefWidth="800" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="orderIdColumn" text="Order ID" prefWidth="100"/>
+                    <TableColumn fx:id="customerNameColumn" text="Customer Name" prefWidth="150"/>
+                    <TableColumn fx:id="deliveryAddressColumn" text="Delivery Address" prefWidth="250"/>
+                    <TableColumn fx:id="contactNumberColumn" text="Contact Number" prefWidth="150"/>
+                    <TableColumn fx:id="orderDateColumn" text="Order Date" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </GridPane>
+        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0" hgap="10" vgap="10" prefWidth="600">
+
+            <VBox fx:id="orderDetailsPane" style="-fx-padding: 10px;" visible="false">
+                <Label text="Ordered Products" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="orderedProductsTableView" prefWidth="800" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="productIdColumn" text="Product ID" prefWidth="100"/>
+                        <TableColumn fx:id="productNameColumn" text="Product Name" prefWidth="200"/>
+                        <TableColumn fx:id="productDescriptionColumn" text="Description" prefWidth="400"/>
+                        <TableColumn fx:id="quantityColumn" text="Quantity" prefWidth="100"/>
+                        <TableColumn fx:id="priceColumn" text="Price" prefWidth="100"/>
+                        <TableColumn fx:id="totalPriceColumn" text="Total Price" prefWidth="100"/>
+                    </columns>
+                </TableView>
+                <Label fx:id="grandTotalLabel" text="Grand Total: Rs."
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 10px 0 0 0;"/>
+
+            </VBox>
+        </GridPane>
+    </GridPane>
+</VBox>
